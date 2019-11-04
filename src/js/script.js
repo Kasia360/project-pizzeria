@@ -140,11 +140,11 @@
       console.log('thisProductInactive', activeProduct);
 
       /* END: if the active product isn't the element of thisProduct */
-
+}
       /* END LOOP: for each active product */
-
+}
       /* END: click event listener to trigger */
-    }
+    });
     }
   }
   app.init();
