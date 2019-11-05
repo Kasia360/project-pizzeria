@@ -161,6 +161,7 @@
         for (let optionId in param.options){
           /* save the element in param.options with key optionId as const option */
           const option = param.options[optionId];
+          const imageSelectors = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
           /* START IF: if option is selected and option is not default */
           if (optionSelected && !option.default){
