@@ -64,6 +64,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
       console.log('new Product:', thisProduct);
     }
@@ -89,6 +90,7 @@
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
 
     initAccordion(){
@@ -176,15 +178,15 @@
             /* END ELSE IF: if option is not selected and option is default */
           }
           // START LOOP IF:
-         if (optionSelected) {
-           for (let imageSelector of imageSelectors){
-             imageSelector.classList.add(classNames.menuProduct.imageVisible);
-           }
-         } else {
-           for (let imageSelector of imageSelectors){
-             imageSelector.classList.remove(classNames.menuProduct.imageVisible);
-           }
-         }
+          if (optionSelected) {
+            for (let imageSelector of imageSelectors){
+              imageSelector.classList.add(classNames.menuProduct.imageVisible);
+            }
+          } else {
+            for (let imageSelector of imageSelectors){
+              imageSelector.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
           /* END LOOP: for each optionId in param.options */
         }
         /* END LOOP: for each paramId in thisProduct.data.params */
@@ -192,6 +194,18 @@
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       console.log('totalPrice:', totalPrice);
       thisProduct.priceElem = totalPrice;
+    }
+    initAmountWidget(){
+      const thisProduct = this;
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+    }
+  }
+
+  class AmountWidget {
+    constructor(element) {
+      const thisWidget = this;
+      console.log('AmountWidget:', thisWidget);
+      console.log('contstructor arguments:', element);
     }
   }
 
