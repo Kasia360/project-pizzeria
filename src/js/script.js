@@ -175,6 +175,16 @@
             totalPrice -= option.price;
             /* END ELSE IF: if option is not selected and option is default */
           }
+          // START LOOP IF:
+         if (optionSelected) {
+           for (let imageSelector of imageSelectors){
+             imageSelector.classList.add(classNames.menuProduct.imageVisible);
+           }
+         } else {
+           for (let imageSelector of imageSelectors){
+             imageSelector.classList.remove(classNames.menuProduct.imageVisible);
+           }
+         }
           /* END LOOP: for each optionId in param.options */
         }
         /* END LOOP: for each paramId in thisProduct.data.params */
