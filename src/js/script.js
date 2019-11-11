@@ -237,7 +237,7 @@
 
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       thisProduct.priceElem.innerHTML = thisProduct.price;
-      console.log('thisProduct.params:', thisProduct.params);
+      //console.log('thisProduct.params:', thisProduct.params);
     }
     initAmountWidget(){
       const thisProduct = this;
@@ -308,7 +308,7 @@
       thisCart.products = [];
       thisCart.getElements(element);
       thisCart.initActions();
-      console.log('new Cart:', thisCart);
+      //console.log('new Cart:', thisCart);
     }
 
     getElements(element){
@@ -317,7 +317,7 @@
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList = document.querySelector(select.cart.productList);
-      console.log('thisCart.dom.productList:', thisCart.dom.productList);
+      //console.log('thisCart.dom.productList:', thisCart.dom.productList);
     }
 
     initActions(){
@@ -335,9 +335,9 @@
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       // add element to cart
       thisCart.dom.productList.appendChild(generatedDOM);
-      console.log('Adding product:', menuProduct);
+      //console.log('Adding product:', menuProduct);
       thisCart.products.push(menuProduct);
-      console.log('thisCart.products:', thisCart.products);
+      //console.log('thisCart.products:', thisCart.products);
 
 
   class CartProduct {
@@ -354,7 +354,7 @@
         thisCartProduct.getElements(element);
         thisCartProduct.initAmountWidget();
 
-        console.log('thisCartProduct', thisCartProduct);
+        //console.log('thisCartProduct', thisCartProduct);
       }
 
       getElements(element){
