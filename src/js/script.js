@@ -316,6 +316,8 @@ console.log('thisProduct.params:', thisProduct.params);
       thisCart.dom = {};
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = document.querySelector(select.cart.productList);
+      console.log('thisCart.dom.productList:', thisCart.dom.productList);
    }
 
    initActions(){
@@ -325,7 +327,14 @@ console.log('thisProduct.params:', thisProduct.params);
      });
     }
     add(menuProduct){
-     // const thisCart = this;
+     const thisCart = this;
+     // generate HTML based on template
+      const generatedHTML = templates.cartProduct(menuProduct);
+      // console.log('generatedHTML:', generatedHTML);
+      // create element using utils.CreateElementFromHTML
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      // add element to cart
+      thisCart.dom.productList.appendChild(generatedDOM);
      console.log('Adding product:', menuProduct);
    }
   }
