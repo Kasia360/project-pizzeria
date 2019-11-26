@@ -76,12 +76,12 @@
     cart: {
       defaultDeliveryFee: 20,
     },
-  // CODE ADDED END
-  db: {
-  url: '//localhost:3131',
-  product: 'product',
-  order: 'order',
-},
+    // CODE ADDED END
+    db: {
+      url: '//localhost:3131',
+      product: 'product',
+      order: 'order',
+    },
   };
 
   const templates = {
@@ -237,11 +237,11 @@
         /* END LOOP: for each paramId in thisProduct.data.params */
       }
       // multiply totalPrice by amount
-      thisProduct.priceSingle = price;
-      thisProduct.totalprice = thisProduct.priceSingle * thisProduct.amountWidget.value;
+      thisProduct.priceSingle = totalPrice;
+      thisProduct.totalPrice = thisProduct.priceSingle * thisProduct.amountWidget.value;
 
       /* set the contents of thisProduct.priceElem to be the value of variable price */
-      thisProduct.priceElem.innerHTML = thisProduct.price;
+      thisProduct.priceElem.innerHTML = thisProduct.totalPrice;
       //console.log('thisProduct.params:', thisProduct.params);
     }
     initAmountWidget(){
@@ -360,7 +360,7 @@
       // add element to cart
       thisCart.dom.productList.appendChild(generatedDOM);
       //console.log('Adding product:', menuProduct);
-      thisCart.products.push(menuProduct);
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
       //console.log('thisCart.products:', thisCart.products);
       thisCart.update();
     }
@@ -370,7 +370,7 @@
       thisCart.totalNumber = 0;
       thisCart.subtotalPrice = 0;
       for (let product of thisCart.products) {
-        thisCart.subtotalPrice += product.price;
+        thisCart.subtotalPrice += product.priceSingle;
         thisCart.totalNumber += product.amount;
       }
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.totalNumber;
@@ -483,7 +483,7 @@
     initMenu: function(){
       const thisApp = this;
       //console.log('thisApp.data:', thisApp.data);
-      for(let productData in thisApp.data.products) {
+      for (let productData in thisApp.data.products){
         new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
@@ -510,7 +510,7 @@
       //console.log('templates:', templates);
       thisApp.data = {};
       fetch(url)
-      .then(function(rawResponse){
+        .then(function(rawResponse){
           return rawResponse.json();
         })
         .then(function(parsedResponse){
