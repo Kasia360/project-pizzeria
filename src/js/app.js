@@ -26,7 +26,7 @@ for(let page of thisApp.pages){
 
     for(let link of thisApp.navLinks){
       link.addEventListener('click', function(event){
-        const = clickedElement = this;
+        const clickedElement = this;
         event.preventDefault();
 
         /*get page id from href attribute*/
@@ -113,7 +113,13 @@ for(let page of thisApp.pages){
 
     //console.log('thisApp.data', JSON.stringify(thisApp.data));
     thisApp.initCart();
+    thisApp.initBooking();
   },
+  initBooking() {
+    const thisApp = this;
+    const reservationVidget = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking();
+  }
 };
 
 app.init();
