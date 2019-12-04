@@ -1,8 +1,11 @@
+import {templates, select} from './settings.js';
+import AmountWidget from './components/AmountWidget.js';
+
 class Booking {
   constructor(element) {
     const thisBooking = this;
-        thisBooking.render(element);
-        thisBooking.initWidgets();
+    thisBooking.render(element);
+    thisBooking.initWidgets();
   }
 
   render(element) {
