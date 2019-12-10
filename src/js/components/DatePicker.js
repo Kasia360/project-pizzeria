@@ -27,10 +27,9 @@ class DatePicker extends BaseWidget {
       disable: [function (date) {
         return (date.getDay() === 1);
       }],
-      //onChange: function (selectedDates, dateStr, instance) {
-      //  thisWidget.value = dateStr;
-      //  console.log(thisWidget.value);
-    //  }
+      onChange: function () {
+      thisWidget.announce();
+    }
     };
     flatpickr(thisWidget.dom.input, flatpickrOptions);
   }
