@@ -32,15 +32,15 @@ class DatePicker extends BaseWidget {
       //  console.log(thisWidget.value);
     //  }
     };
-        flatpickr(thisWidget.dom.input, flatpickrOptions);
-      }
-      parseValue(value) {
-        return value;
-      }
-      isValid() {
-        return true;
-      }
-      renderValue() {
+    flatpickr(thisWidget.dom.input, flatpickrOptions);
+  }
+  parseValue(value) {
+    return value;
+  }
+  isValid() {
+    return true;
+  }
+  renderValue() {
   }
 }
 
