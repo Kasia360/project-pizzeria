@@ -2,7 +2,7 @@ import {classNames,templates, select, settings} from './settings.js';
 import AmountWidget from './components/AmountWidget.js';
 import DatePicker from './components/DatePicker.js';
 import HourPicker from './components/HourPicker.js';
-import utils from './utils.js';
+import {utils} from './utils.js';
 
 class Booking {
   constructor(element) {

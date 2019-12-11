@@ -1,6 +1,6 @@
 /* global Handlebars, dataSource */
 
-const utils = {}; // eslint-disable-line no-unused-vars
+export const utils = {}; // eslint-disable-line no-unused-vars
 
 utils.createDOMFromHTML = function(htmlString) {
   let div = document.createElement('div');
@@ -80,4 +80,4 @@ Handlebars.registerHelper('joinValues', function(input, options) {
   return Object.values(input).join(options.fn(this));
 });
 
-export default utils;
+// export default utils;

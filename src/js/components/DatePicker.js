@@ -3,7 +3,7 @@
 
 import BaseWidget from './BaseWidget.js';
 import { select, settings } from '../settings.js';
-import utils from '../utils.js';
+import {utils} from '../utils.js';
 
 
 class DatePicker extends BaseWidget {
