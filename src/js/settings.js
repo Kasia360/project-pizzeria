@@ -137,5 +137,3 @@ export const templates = {
   // CODE ADDED END
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
 };
-
-export default settings;

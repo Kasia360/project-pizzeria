@@ -1,8 +1,8 @@
 import {classNames,templates, select, settings} from './settings.js';
 import AmountWidget from './components/AmountWidget.js';
-import DatePicker from './DatePicker.js';
-import HourPicker from './HourPicker.js';
-import utils from '../utils.js';
+import DatePicker from './components/DatePicker.js';
+import HourPicker from './components/HourPicker.js';
+import utils from './utils.js';
 
 class Booking {
   constructor(element) {
@@ -57,9 +57,9 @@ class Booking {
         ]);
       })
       .then(function ([bookings, eventsCurrent, eventsRepeat]) {
-        //console.log(bookings);
-        //console.log(eventsCurrent);
-        //console.log(eventsRepeat);
+        console.log('bookings',bookings);
+        console.log('eventsCurrent',eventsCurrent);
+        console.log('eventsRepeat',eventsRepeat);
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
       });
   }
@@ -171,12 +171,13 @@ class Booking {
     // select table
     for (let table of thisBooking.dom.tables) {
       const tableBooked = table.classList.contains(classNames.booking.tableBooked);
-      const tableSelected = table.classList.contains(classNames.booking.tableSelected);
+      //const tableSelected = table.classList.contains(classNames.booking.tableSelected);
       if (!tableBooked) {
         table.addEventListener('click', function (event) {
           event.preventDefault();
           const clickedTable = this;
           clickedTable.classList.toggle(classNames.booking.tableSelected);
+          thisBooking.tableSelected = table.getAttribute(settings.booking.tableIdAttribute);
         });
       }
     }

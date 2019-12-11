@@ -28,8 +28,8 @@ class DatePicker extends BaseWidget {
         return (date.getDay() === 1);
       }],
       onChange: function () {
-      thisWidget.announce();
-    }
+        thisWidget.announce();
+      }
     };
     flatpickr(thisWidget.dom.input, flatpickrOptions);
   }
