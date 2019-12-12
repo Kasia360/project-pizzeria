@@ -14,9 +14,9 @@ class BaseWidget{
     return thisWidget.correctValue;
   }
 
-  set Value(value){
+  set value(value){
     const thisWidget = this;
-    const newValue = thisWidget.parseInt(value);
+    const newValue = parseInt(value);
     // TODO: Add validation
     if (value != thisWidget.correctValue && thisWidget.isValid(newValue)){
       thisWidget.correctValue = newValue;
