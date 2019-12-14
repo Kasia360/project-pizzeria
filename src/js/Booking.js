@@ -150,6 +150,7 @@ class Booking {
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
     thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.address);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
   }
 
   initWidgets() {
@@ -184,6 +185,20 @@ class Booking {
       }
     }
 
+    //add starters
+    thisBooking.starters = [];
+    for (let starter of thisBooking.dom.starters) {
+      starter.addEventListener('change', function (event) {
+        event.preventDefault();
+        const clickedStarter = this;
+        if (thisBooking.starters.indexOf(clickedStarter.value) < 0) {
+          thisBooking.starters.push(clickedStarter.value);
+        } else {
+          thisBooking.starters.splice(thisBooking.starters.indexOf(clickedStarter.value));
+        }
+      });
+    }
+
     //submit
     thisBooking.dom.wrapper.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -209,6 +224,9 @@ class Booking {
       phone: thisBooking.dom.phone,
     };
     console.log('url', url, 'payload', payload);
+    for (let starter of thisBooking.starters) {
+      payload.starters.push(starter);
+    }
     const options = {
       method: 'POST',
       headers: {
