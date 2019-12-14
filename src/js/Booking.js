@@ -195,15 +195,15 @@ class Booking {
   sendReservation() {
     const thisBooking = this;
     const url = settings.db.url + '/' + settings.db.booking;
-    const date = thisBooking.date.value;
-    const hour = thisBooking.hour.value;
+    const date = thisBooking.datePicker.value;
+    const hour = thisBooking.hourPicker.value;
     const payload = {
       date: date,
       hour: hour,
       table: thisBooking.tableSelected,
       repeat: false,
-      duration: thisBooking.dom.hoursAmount.value,
-      ppl: thisBooking.dom.peopleAmount.value,
+      duration: thisBooking.hoursAmount.value,
+      ppl: thisBooking.peopleAmount.value,
       starters: [],
       address: thisBooking.dom.address,
       phone: thisBooking.dom.phone,
