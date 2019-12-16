@@ -69,6 +69,7 @@ export const select = {
   },
   nav: {
     links: '.main-nav a',
+    bigLinks: '.big-nav a',
   },
 // CODE ADDED END
 };

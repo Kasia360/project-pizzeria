@@ -1,0 +1,187 @@
+.wrapper {
+  background: #fff;
+  margin-top: 42px;
+  border-radius: $radius;
+  padding: 0 46px;
+}
+
+.big-nav {
+  @include flex(row, flex-start, space-between);
+  margin-bottom: 0px;
+
+  a {
+    text-decoration: none;
+    color: $color-light;
+    text-align: center;
+
+
+    .big-nav-links {
+      width: 300px;
+      height: 120px;
+      background-size: cover;
+      border-radius: $radius;
+      margin-top: 70px;
+      background-image: url("../../images/main/pizza-2.jpg");
+      position: relative;
+
+      h2 {
+        position: absolute;
+        font-size: ($base-size*2);
+        font-family: $font-header;
+        text-transform: uppercase;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: $transition;
+
+      }
+
+      p {
+        width: 100%;
+        position: absolute;
+        margin: 0;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: $transition;
+        font-size: 16px;
+        font-weight: $font-light;
+      }
+
+      &:first-child {
+        background-image: url("../../images/main/pizza-1.jpg");
+      }
+
+      &:hover {
+        h2 {
+          top: 40%;
+        }
+
+        p {
+          opacity: 1;
+          top: 70%;
+        }
+      }
+    }
+  }
+
+}
+
+.openingHours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: ($base-size*10);
+  background: $color-main;
+  margin-top: ($base-size*2/3);
+  border-radius: $radius;
+  text-align: center;
+
+  h1 {
+    font-size: ($base-size*2);
+    font-family: $font-header;
+    color: $color-light;
+    text-transform: uppercase;
+    margin: 0;
+    margin-top: 2px;
+  }
+
+  p {
+    margin: 0;
+    margin-top: 6px;
+    text-transform: uppercase;
+    font-size: ($base-size*1.2);
+    color: $color-light;
+    font-weight: $font-light;
+  }
+}
+
+.opinions {
+  margin: 100px 0;
+
+  .carousel-indicators {
+    bottom: -75px;
+
+    .active{
+      opacity: 0.5;
+    }
+
+    li {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $color-dark;
+      opacity: 0.25;
+      margin: 0 10px;
+    }
+  }
+
+  .carousel-inner {
+    .carousel-item {
+      img {
+        height: ($base-size*16);
+        width: ($base-size*16);
+        object-fit: cover;
+      }
+
+      .carousel-caption {
+        color: $color-dark;
+        text-align: left;
+        margin-left: 40px;
+        right: auto;
+        bottom: auto;
+        left : auto;
+
+      }
+    }
+  }
+}
+
+.carousel-caption {
+  h5 {
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+
+  p {
+    margin-top: 17px;
+    font-size: 15px;
+
+    span {
+      margin-top: 30px;
+      font-style: italic;
+    }
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 125px;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.25;
+  }
+
+  .gallery-image {
+    width: 195px;
+    height: 195px;
+    margin-bottom: 15px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: $radius;
+
+    }
+  }
+}

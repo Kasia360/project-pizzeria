@@ -1,5 +1,5 @@
 .header {
-  padding: ($base-size * 5) 0 ($base-size * 8) 0;
+  padding: ($base-size * 4.5) 0 ($base-size * 5.5) 0;
   background: $color-dark;
   color: $color-light;
 
@@ -14,11 +14,16 @@
   line-height: 1;
 
   &__title {
-    margin: 0 0 $base-size 0;
+    margin: 0;
     font-size: ($base-size * 4);
     font-family: $font-header;
     font-weight: $font-light;
     text-transform: uppercase;
+
+    a {
+      text-decoration: none;
+      color: $color-light;
+    }
 
     span {
       font-weight: $font-bold;
@@ -38,7 +43,8 @@
 .main-nav {
   position: absolute;
   @include flex(row, flex-start, flex-start);
-  bottom: ($base-size * -8);
+  bottom: ($base-size * -5.5);
+  right: 0;
 
   a {
     @extend .h2;
@@ -56,5 +62,4 @@
     }
 
   }
-
 }

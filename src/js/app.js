@@ -9,6 +9,7 @@ const app = {
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
 
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
+    thisApp.bigLinks = document.querySelectorAll(select.nav.bigLinks);
 
     const idFromHash = window.location.hash.replace('#/','' );
     //console.log('idFromHash',idFromHash);
@@ -38,6 +39,16 @@ const app = {
         /*change URL hash*/
         window.location.hash = '#/' + id;
 
+      });
+    }
+    for (let link of thisApp.bigLinks) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        const clickedElement = this;
+        const id = clickedElement.getAttribute('href').replace('#', '');
+        thisApp.activatePage(id);
+        // change URL hash
+        window.location.hash = '#/' + id;
       });
     }
   },
