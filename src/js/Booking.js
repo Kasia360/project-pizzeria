@@ -160,15 +160,26 @@ class Booking {
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
 
-    thisBooking.dom.wrapper.addEventListener('updated', function () {
+  /*  thisBooking.dom.wrapper.addEventListener('updated', function () {
       for (let table of thisBooking.dom.tables) {
         table.classList.remove(classNames.booking.tableSelected);
       }
       thisBooking.updateDOM();
-    });
+    }); */
   }
   initActions() {
     const thisBooking = this;
+
+    //update tables when date or time is changed
+    const elements = [thisBooking.dom.datePicker, thisBooking.dom.hourPicker];
+    for (let element of elements) {
+      element.addEventListener('updated', function () {
+        for (let table of thisBooking.dom.tables) {
+          table.classList.remove(classNames.booking.tableSelected);
+        }
+        thisBooking.updateDOM();
+      });
+    }
 
     // select table
     for (let table of thisBooking.dom.tables) {
@@ -202,9 +213,45 @@ class Booking {
     //submit
     thisBooking.dom.wrapper.addEventListener('submit', function (event) {
       event.preventDefault();
-      thisBooking.sendReservation();
-      thisBooking.updateDOM();
+      const tableAvailable = thisBooking.ishoursAmoutCorrect(utils.hourToNumber(thisBooking.hourPicker.value));
+      console.log('tableAvailable', tableAvailable);
+      if (tableAvailable) {
+        thisBooking.sendReservation();
+        thisBooking.updateDOM();
+      }
     });
+  }
+ishoursAmoutCorrect(selectedHour) {
+  const thisBooking = this;
+  const timeToClosing = parseInt(settings.hours.close) - selectedHour;
+  const duration = parseFloat(thisBooking.hoursAmount.value);
+  console.log('timeToClosing', timeToClosing);
+  let availableTime = 0.5;
+
+
+  if (timeToClosing >= duration) {
+    for (let checkedHour = selectedHour + 0.5; checkedHour < selectedHour + duration; checkedHour += 0.5) {
+      if (typeof thisBooking.booked[thisBooking.datePicker.value][checkedHour] == 'undefined') {
+          thisBooking.booked[thisBooking.datePicker.value][checkedHour] = [];
+        }
+      if (thisBooking.booked[thisBooking.datePicker.value][checkedHour].indexOf(thisBooking.tableSelected) < 0) {
+        availableTime += 0.5;
+        console.log('checkedHour', checkedHour);
+        console.log('availableTime', availableTime);
+      } else {
+        break;
+      }
+    }
+    if (availableTime >= duration) {
+      return true;
+    } else {
+      window.alert('This table is available only for ' + availableTime + ' hours');
+      return false;
+    }
+  } else {
+    window.alert('Sorry, we are open only till midnight.');
+    return false;
+  }
 
   }
   sendReservation() {
