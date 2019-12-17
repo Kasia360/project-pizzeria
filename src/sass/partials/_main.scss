@@ -161,20 +161,29 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 125px;
-  position: relative;
 
-  &:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.25;
-  }
 
   .gallery-image {
     width: 195px;
     height: 195px;
     margin-bottom: 15px;
+    position: relative;
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      left: 0;
+      background-color: $color-dark;
+      transition: $transition;
+    }
+
+    &:hover:after {
+      opacity: 0.7;
+    }
 
     img {
       width: 100%;
@@ -182,6 +191,29 @@
       object-fit: cover;
       border-radius: $radius;
 
+    }
+    .gallery-inner{
+      position: absolute;
+      opacity: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: $transition;
+      z-index: 10;
+
+      i {
+        margin: 5px;
+        font-size: 20px;
+        color: $color-light;
+        &:hover {
+          color: $color-main;
+        }
+      }
+
+    }
+
+    &:hover .gallery-inner {
+      opacity: 1;
     }
   }
 }
