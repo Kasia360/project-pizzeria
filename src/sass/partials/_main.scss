@@ -192,6 +192,7 @@
       border-radius: $radius;
 
     }
+
     .gallery-inner{
       position: absolute;
       opacity: 0;
@@ -205,6 +206,7 @@
         margin: 5px;
         font-size: 20px;
         color: $color-light;
+
         &:hover {
           color: $color-main;
         }

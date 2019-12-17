@@ -221,37 +221,37 @@ class Booking {
       }
     });
   }
-ishoursAmoutCorrect(selectedHour) {
-  const thisBooking = this;
-  const timeToClosing = parseInt(settings.hours.close) - selectedHour;
-  const duration = parseFloat(thisBooking.hoursAmount.value);
-  console.log('timeToClosing', timeToClosing);
-  let availableTime = 0.5;
+  ishoursAmoutCorrect(selectedHour) {
+    const thisBooking = this;
+    const timeToClosing = parseInt(settings.hours.close) - selectedHour;
+    const duration = parseFloat(thisBooking.hoursAmount.value);
+    console.log('timeToClosing', timeToClosing);
+    let availableTime = 0.5;
 
 
-  if (timeToClosing >= duration) {
-    for (let checkedHour = selectedHour + 0.5; checkedHour < selectedHour + duration; checkedHour += 0.5) {
-      if (typeof thisBooking.booked[thisBooking.datePicker.value][checkedHour] == 'undefined') {
+    if (timeToClosing >= duration) {
+      for (let checkedHour = selectedHour + 0.5; checkedHour < selectedHour + duration; checkedHour += 0.5) {
+        if (typeof thisBooking.booked[thisBooking.datePicker.value][checkedHour] == 'undefined') {
           thisBooking.booked[thisBooking.datePicker.value][checkedHour] = [];
         }
-      if (thisBooking.booked[thisBooking.datePicker.value][checkedHour].indexOf(thisBooking.tableSelected) < 0) {
-        availableTime += 0.5;
-        console.log('checkedHour', checkedHour);
-        console.log('availableTime', availableTime);
-      } else {
-        break;
+        if (thisBooking.booked[thisBooking.datePicker.value][checkedHour].indexOf(thisBooking.tableSelected) < 0) {
+          availableTime += 0.5;
+          console.log('checkedHour', checkedHour);
+          console.log('availableTime', availableTime);
+        } else {
+          break;
+        }
       }
-    }
-    if (availableTime >= duration) {
-      return true;
+      if (availableTime >= duration) {
+        return true;
+      } else {
+        window.alert('This table is available only for ' + availableTime + ' hours');
+        return false;
+      }
     } else {
-      window.alert('This table is available only for ' + availableTime + ' hours');
+      window.alert('Sorry, we are open only till midnight.');
       return false;
     }
-  } else {
-    window.alert('Sorry, we are open only till midnight.');
-    return false;
-  }
 
   }
   sendReservation() {
