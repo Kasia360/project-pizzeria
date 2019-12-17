@@ -249,7 +249,7 @@ class Booking {
         return false;
       }
     } else {
-      window.alert('Sorry, we are open only till midnight.');
+      window.alert('Sorry, we are open only till 23 pm.');
       return false;
     }
 
