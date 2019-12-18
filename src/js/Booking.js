@@ -267,8 +267,8 @@ class Booking {
       duration: thisBooking.hoursAmount.value,
       ppl: thisBooking.peopleAmount.value,
       starters: [],
-      address: thisBooking.dom.address,
-      phone: thisBooking.dom.phone,
+      address: thisBooking.dom.address.value,
+      phone: thisBooking.dom.phone.value,
     };
     console.log('url', url, 'payload', payload);
     for (let starter of thisBooking.starters) {
